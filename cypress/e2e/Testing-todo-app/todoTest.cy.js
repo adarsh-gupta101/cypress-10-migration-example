@@ -5,11 +5,10 @@ describe("example to-do app", () => {
     cy.visit("http://localhost:3001");
   });
 
-  it("displays 0 todo items by default", () => {
+  it("check if there is a heading H1 element", () => {
     // We use the `cy.get()` command to get all elements that match the selector.
-   
 
-//    checking if we have a heading tag with text Todo App
+    //    checking if we have a heading tag with text Todo App
     cy.get("h1").should("have.text", "Todo App");
   });
 
@@ -21,12 +20,11 @@ describe("example to-do app", () => {
     // Let's get the input element and use the `type` command to
     // input our new list item. After typing the content of our item,
     // we need to type the enter key as well in order to submit the input.
-  
+
     cy.get('[ data-input="todo-input"]').type(`${newItem}{enter}`);
     cy.get(`[data-button="Add-Todo"]`).click();
 
     cy.get('[ data-input="todo-input"]').type(`${newItem2}{enter}`);
-
 
     cy.get(`[data-button="Add-Todo"]`).click();
 
@@ -40,6 +38,10 @@ describe("example to-do app", () => {
     cy.get('[ data-input="todo-input"]').type(`${newItem}{enter}`);
 
     cy.get(`[data-button="Add-Todo"]`).click();
+    cy.get('[ data-input="todo-input"]').type(`${newItem}{enter}`);
+
     cy.get(`[data-button="Add-Todo"]`).click();
   });
 });
+
+

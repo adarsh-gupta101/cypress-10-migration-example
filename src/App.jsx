@@ -13,17 +13,18 @@ function App() {
   function addNewTod(newTodo) {
     let flag = 0;
     todoList.forEach((todo) => {
-      if (newTodo === "") {
+      if (newTodo == "" || newTodo=='') {
         flag = 1;
+        // alert()
         toast.error("Please enter a valid todo");
       }
-      if (todo === newTodo || newTodo === "") {
-        alert("Oops! You have already added this task");
+      if (todo === newTodo ) {
+        console.log("Oops! You have already added this task");
         flag = 1;
       }
     });
 
-    if (flag === 0) {
+    if (flag !=1 ) {
       setTodoList([...todoList, newTodo]);
       toast(`Todo ${newTodo} Added`, {
         position: "top-center",
@@ -75,7 +76,7 @@ function App() {
             />
             <button
               data-button='Add-Todo'
-              onClick={() => addNewTod(inputRef.current.value)}
+              onClick={() => {inputRef.current.value!="" && addNewTod(inputRef.current.value)}}
               className='px-4 py-2 text-white bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50'>
               Add
             </button>
@@ -94,6 +95,8 @@ function App() {
               </div>
             );
           })}
+                <p className="text-gray-400 bg-white text-center">Double click to remove an item</p>
+
         </div>{" "}
       </div>
     </div>
